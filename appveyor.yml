@@ -27,7 +27,7 @@ install:
   - pip --version
   - pip install pybind11
   - pip install wheel
-  - pip install cibuildwheel=2.12.1
+  - pip install cibuildwheel==2.12.1
 
 build_script: python -m pip cibuildwheel --output-dir wheelhouse
 
