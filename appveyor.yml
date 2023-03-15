@@ -29,7 +29,7 @@ install:
   - pip install wheel
   - pip install cibuildwheel==2.12.1
 
-build_script: python -m pip cibuildwheel --output-dir wheelhouse
+build_script: python -m cibuildwheel --output-dir wheelhouse
 
 artifacts:
   - path: "wheelhouse\\*"
