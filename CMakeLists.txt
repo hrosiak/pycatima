@@ -23,14 +23,18 @@ set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
 
-# Add main library
+# Add main library (TODO: use zip, not git clone)
 include(FetchContent)
 FetchContent_Declare(
   catima
   GIT_REPOSITORY https://github.com/hrosiak/catima.git
   )
-FetchContent_MakeAvailable(catima)
-
+FetchContent_GetProperties(catima)
+if(NOT catima_POPULATED)
+  FetchContent_Populate(catima)
+  set(APPS OFF)
+  add_subdirectory(${catima_SOURCE_DIR} ${catima_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
 
 # Build extension
 find_package(pybind11 CONFIG REQUIRED)
