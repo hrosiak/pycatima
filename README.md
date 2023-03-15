@@ -1,3 +1,5 @@
+![Build](https://github.com/hrosiak/pycatima/actions/workflows/build.yml/badge.svg)
+
 # pycatima
 
 
