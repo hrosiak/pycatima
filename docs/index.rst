@@ -11,7 +11,7 @@ Content
    :maxdepth: 1
    :caption: Installation
 
-   README
+   install
 
 .. toctree::
    :maxdepth: 1
