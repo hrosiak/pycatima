@@ -22,3 +22,11 @@ requires-python = ">=3.7"
 minimum-version = "0.2"
 build-dir = "build/{cache_tag}"
 wheel.packages = ["pycatima"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.cibuildwheel]
+test-command = "pytest {project}/tests"
+test-extras = ["test"]
+build-verbosity = 1
