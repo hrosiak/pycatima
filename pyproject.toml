@@ -19,9 +19,8 @@ maintainers = [
 requires-python = ">=3.7"
 
 [tool.scikit-build]
-minimum-version = "0.2"
+minimum-version = "0.2.1"
 build-dir = "build/{cache_tag}"
-wheel.packages = ["pycatima"]
 
 [project.optional-dependencies]
 test = ["pytest"]
