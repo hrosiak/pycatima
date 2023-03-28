@@ -27,6 +27,6 @@ wheel.packages = ["pycatima"]
 test = ["pytest"]
 
 [tool.cibuildwheel]
-test-command = "pytest {project}/tests"
+test-command = "python {project}/tests/test.py"
 test-extras = ["test"]
 build-verbosity = 1
