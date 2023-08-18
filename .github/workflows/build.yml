@@ -26,15 +26,15 @@ jobs:
           - os: macos-latest
             type: "Universal"
             arch: universal2
-            build: "cp*"
+            build: "cp{38,39,310,311}*"
 
           - os: windows-latest
             arch: auto64
-            build: "cp*"
+            build: "cp{38,39,310,311}*"
 
           - os: windows-latest
             arch: auto32
-            build: "cp{37,38,39}-*"
+            build: "cp{38,39}-*"
 
     steps:
       - uses: actions/checkout@v3
