@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
         arch: [ auto64 ]
-        build: [ "cp311*"]
+        build: [ "cp311-{win_amd,manylinux_x86}*"]
 
     steps:
       - uses: actions/checkout@v3
