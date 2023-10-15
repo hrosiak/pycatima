@@ -145,6 +145,7 @@ PYBIND11_MODULE(_ext,m){
              .def(py::init<double, int, double, double, double>(),"constructor", py::arg("A"),py::arg("Z"),py::arg("density")=0.0,py::arg("thickness")=0.0,py::arg("i_potential")=0.0)
              .def(py::init(&py_make_material),"constructor", py::arg("elements"),py::arg("density")=0.0,py::arg("thickness")=0.0,py::arg("i_potential")=0.0, py::arg("mass")=0.0)
              .def("add_element",&Material::add_element)
+	     .def("get_element",&Material::get_element)
              .def("ncomponents",&Material::ncomponents)
              .def("density",py::overload_cast<>(&Material::density, py::const_), "get density")
              .def("density",py::overload_cast<double>(&Material::density), "set density")
