@@ -1,9 +1,10 @@
 name: Build
 
 on:
-  release:
-    types:
-      - published
+  workflow_dispatch:
+  #release:
+  #  types:
+  #    - published
 
 
 concurrency:
