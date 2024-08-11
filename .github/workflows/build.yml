@@ -67,9 +67,13 @@ jobs:
 
   upload_pypi:
     needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-latest
-    # Publish when a GitHub Release is created, use the following rule:
+    runs-on: ubuntu-latest    
     if: github.event_name == 'release' && github.event.action == 'published'
+    environment: 
+      name: pypi
+      url: https://pypi.org/p/pycatima
+    permissions:
+      id-token: write
     steps:
       #- uses: actions/download-artifact@v3
       #  with:
@@ -84,8 +88,6 @@ jobs:
           path: dist
           merge-multiple: true
 
-      - uses: pypa/gh-action-pypi-publish@v1.5.0
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:          
           verify-metadata: false
