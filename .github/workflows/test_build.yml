@@ -19,15 +19,15 @@ jobs:
         build: [ "cp311-{win_amd,manylinux_x86}*"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Build wheels
-        uses: "pypa/cibuildwheel@v2.12.0"
+        uses: "pypa/cibuildwheel@v2.20.0"
         env:
           CIBW_BUILD: ${{ matrix.build }}
           CIBW_ARCHS: ${{ matrix.arch }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
 
@@ -35,11 +35,11 @@ jobs:
     name: Build source distribution
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Build sdist
         run: pipx run build --sdist
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: dist/*.tar.gz
