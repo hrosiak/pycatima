@@ -6,6 +6,7 @@ on:
       - '**/*.yml'
       - '*.md'
   pull_request:    
+  workflow_dispatch:
 
 concurrency:
   group: build-${{ github.head_ref }}
