@@ -3,6 +3,9 @@ name: Test_build
 on:
   push:
   pull_request:
+    paths-ignore:
+      - '.github/workflows/*'
+      - '*.md'
 
 concurrency:
   group: build-${{ github.head_ref }}
