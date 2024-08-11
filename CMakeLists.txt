@@ -27,8 +27,8 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
 include(FetchContent)
 FetchContent_Declare(
   catima
-  URL https://github.com/hrosiak/catima/archive/refs/tags/v1.8.zip
-  SOURCE_SUBDIR catima-1.8
+  URL https://github.com/hrosiak/catima/archive/refs/tags/v1.81.zip
+  SOURCE_SUBDIR catima-1.81
   )
 FetchContent_GetProperties(catima)
 if(NOT catima_POPULATED)
