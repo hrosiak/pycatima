@@ -2,10 +2,10 @@ name: Test_build
 
 on:
   push:
-  pull_request:
     paths-ignore:
       - '**/*.yml'
       - '*.md'
+  pull_request:    
 
 concurrency:
   group: build-${{ github.head_ref }}
