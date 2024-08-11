@@ -56,9 +56,14 @@ jobs:
       - name: Build sdist
         run: pipx run build --sdist
 
+      #- uses: actions/upload-artifact@v3
+      #  with:
+      #    path: dist/*.tar.gz
+          
       - uses: actions/upload-artifact@v4
         with:
-          path: dist/*.tar.gz
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          path: ./wheelhouse/*.whl
 
   upload_pypi:
     needs: [build_wheels, build_sdist]
@@ -66,12 +71,18 @@ jobs:
     # Publish when a GitHub Release is created, use the following rule:
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
-      - uses: actions/download-artifact@v4
-        with:
+      #- uses: actions/download-artifact@v3
+      #  with:
           # unpacks default artifact into dist/
           # if `name: artifact` is omitted, the action will create extra parent dir
-          name: artifact
+      #    name: artifact
+      #    path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          # unpacks all CIBW artifacts into dist/
+          pattern: cibw-*
           path: dist
+          merge-multiple: true
 
       - uses: pypa/gh-action-pypi-publish@v1.5.0
         with:
