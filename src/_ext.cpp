@@ -425,7 +425,8 @@ PYBIND11_MODULE(_ext,m){
 		 .value("CoRe_Alloy", material::CoRe_Alloy)
 		 .value("LLZO_electrolyte", material::LLZO_electrolyte)
 		 .value("Nylon", material::Nylon)
-		 .value("Brass", material::Brass);
+		 .value("Brass", material::Brass)
+		 .value("RW3", material::RW3);
 
 
 
