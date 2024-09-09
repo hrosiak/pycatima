@@ -437,6 +437,7 @@ PYBIND11_MODULE(_ext,m){
             .def_readwrite("calculation", &Config::calculation)
             .def_readwrite("low_energy", &Config::low_energy)
             .def_readwrite("scattering", &Config::scattering)
+	    .def_readwrite("scattering_factor", &Config::scattering_factor)
             .def("get",[](const Config &r){
                py::dict d;
                d["z_effective"] = r.z_effective;
@@ -444,6 +445,7 @@ PYBIND11_MODULE(_ext,m){
                d["calculation"] = r.calculation;
                d["low_energy"] = r.low_energy;
                d["scattering"] = r.scattering;
+	       d["scattering_factor"] = r.scattering_factor;
                return d;
                })
             .def("__str__",[](const Config &r){
@@ -453,6 +455,7 @@ PYBIND11_MODULE(_ext,m){
                 s += ", calculation = "+std::to_string(r.calculation);
                 s += ", low_energy = "+std::to_string(r.low_energy);
                 s += ", scattering = "+std::to_string(r.scattering);
+		s += ", scattering_factor = "+std::to_string(r.scattering_factor);
                 return s;
             });
 
