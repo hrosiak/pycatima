@@ -19,13 +19,13 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13, macos-14 ]
         arch: [ auto64 ]
-        build: [ "cp{38,39,310,311}-*"]      
+        build: [ "cp{38,39,310,311,312,313}-*"]      
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Build wheels
-        uses: "pypa/cibuildwheel@v2.20.0"
+        uses: "pypa/cibuildwheel@v3.0.1"
         env:
            CIBW_BUILD: ${{ matrix.build }}
            CIBW_ARCHS: ${{ matrix.arch }}
