@@ -19,10 +19,10 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13, macos-14 ]
         arch: [ auto64 ]
-        build: [ "cp{38,39,310,311,312,313,314}-*"]      
+        build: [ "cp{311,312,313,314}-*"]      
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build wheels
         uses: "pypa/cibuildwheel@v3.0.1"
@@ -31,7 +31,7 @@ jobs:
            CIBW_ARCHS: ${{ matrix.arch }}
            CIBW_SKIP: "pp* *-win32 *-manylinux_i686 *-musllinux* cp313-*"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -40,12 +40,12 @@ jobs:
     name: Build source distribution
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build sdist
         run: pipx run build --sdist
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: cibw-sdist
           path: dist/*.tar.gz
@@ -60,7 +60,7 @@ jobs:
     permissions:
       id-token: write
     steps:      
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           # unpacks all CIBW artifacts into dist/
           pattern: cibw-*
