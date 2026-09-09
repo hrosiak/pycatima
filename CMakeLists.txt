@@ -1,6 +1,6 @@
 # BSD 3-Clause License; see https://github.com/scikit-hep/awkward-1.0/blob/main/LICENSE
 
-cmake_minimum_required(VERSION 3.15...3.24)
+cmake_minimum_required(VERSION 3.15...4.2)
 
 project(
   ${SKBUILD_PROJECT_NAME}
