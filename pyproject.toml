@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "scikit-build-core[pyproject]>=0.2.0",
+    "scikit-build-core[pyproject]>=1.0.0",
     "pybind11",
 ]
 build-backend = "scikit_build_core.build"
@@ -8,7 +8,7 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "pycatima"
 description = "Python interface to CATIMA library"
-version = "1.981"
+version = "1.982"
 readme = {file = "README.md", content-type = "text/markdown"}
 authors = [
     {name = "Andrej Prochazka", email = "hrocho@vodacionline.sk"},
@@ -16,10 +16,10 @@ authors = [
 maintainers = [
     {name = "Angus Hollands", email = "goosey15@gmail.com"},
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 
 [tool.scikit-build]
-minimum-version = "0.2.1"
+minimum-version = "1.0.0"
 build-dir = "build/{cache_tag}"
 
 [project.optional-dependencies]
