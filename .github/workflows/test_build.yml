@@ -30,6 +30,8 @@ jobs:
         env:
           CIBW_BUILD: ${{ matrix.build }}
           CIBW_ARCHS: ${{ matrix.arch }}
+          CIBW_TEST_REQUIRES: pytest
+          CIBW_TEST_COMMAND: pytest {project}/test/test.py
 
       - uses: actions/upload-artifact@v7
         with:
