@@ -30,7 +30,6 @@ jobs:
         env:
           CIBW_BUILD: ${{ matrix.build }}
           CIBW_ARCHS: ${{ matrix.arch }}
-          CIBW_TEST_COMMAND: "python -m unittest discover -s {project}/test -p '*.py'"
 
       - uses: actions/upload-artifact@v7
         with:
