@@ -27,7 +27,7 @@ set(APPS OFF CACHE INTERNAL "")
 include(FetchContent)
 FetchContent_Declare(
   catima
-  URL https://github.com/hrosiak/catima/archive/refs/tags/v1.90.zip  
+  URL https://github.com/hrosiak/catima/archive/refs/tags/v1.91.zip  
   )
 FetchContent_MakeAvailable(catima)
 
