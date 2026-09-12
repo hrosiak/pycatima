@@ -13,6 +13,8 @@
 namespace py = pybind11;
 using namespace catima;
 
+auto& default_config = get_default_config();
+
 std::string catima_info(){
     return "CATIMA version = 1.7\n";
 }
@@ -31,7 +33,7 @@ std::string  material_to_string(const Material &r){
 py::list storage_info(){
     py::list res;
     for(int i=0; i<max_storage_data;i++){
-        auto& data = _storage.Get(i);
+        auto& data = get_storage().Get(i);
         if(data.p.A>0 && data.p.Z && data.m.ncomponents()>0){
             py::list mat;
             py::dict d;
@@ -47,11 +49,11 @@ py::list storage_info(){
     return res;
 }
 
-py::list get_energy_table(){
+py::list py_get_energy_table(){
     py::list r;
-    for (size_t i = 0; i < energy_table.size(); i++)
+    for (size_t i = 0; i < get_energy_table().size(); i++)
     {
-        r.append(energy_table[i]);
+        r.append(get_energy_table()[i]);
     }
 
     //for(auto e : energy_table){
@@ -62,7 +64,7 @@ py::list get_energy_table(){
 
 py::list get_data(Projectile& p, const Material &m, const Config& c=default_config){
     py::list r;
-    auto& data = _storage.Get(p, m, c);
+    auto& data = get_storage().Get(p, m, c);
     py::list ran;
     py::list rans;
     py::list av;
@@ -487,8 +489,8 @@ PYBIND11_MODULE(_ext,m){
     m.def("save_mocadi", &save_mocadi,py::arg("filename"),py::arg("projectile"),py::arg("layers"),py::arg("psx")=Phasespace(), py::arg("psy")=Phasespace());
     m.def("catima_info",&catima_info);
     m.def("storage_info",&storage_info);
-    m.def("get_energy_table",&get_energy_table);
-    m.def("energy_table",[](int i){return energy_table(i);});
+    m.def("get_energy_table",&py_get_energy_table);
+    m.def("energy_table",[](int i){return get_energy_table()[i];});
     m.def("z_effective",&z_effective);
     m.attr("max_datapoints") = max_datapoints;
     m.attr("max_storage_data") = max_storage_data;
